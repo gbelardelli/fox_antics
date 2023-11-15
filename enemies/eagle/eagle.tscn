@@ -1,0 +1,69 @@
+[gd_scene load_steps=11 format=3 uid="uid://cjfus821uisel"]
+
+[ext_resource type="PackedScene" uid="uid://b16lipd8bgmbd" path="res://enemies/enemy_base/enemy_base.tscn" id="1_y7ksk"]
+[ext_resource type="Texture2D" uid="uid://caa7eh3euria0" path="res://assets/enemies/eagle/eagle-attack.png" id="2_8lhq3"]
+[ext_resource type="Script" path="res://enemies/eagle/eagle.gd" id="2_frngu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ex27r"]
+atlas = ExtResource("2_8lhq3")
+region = Rect2(0, 0, 40, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_atf6d"]
+atlas = ExtResource("2_8lhq3")
+region = Rect2(40, 0, 40, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iixnu"]
+atlas = ExtResource("2_8lhq3")
+region = Rect2(80, 0, 40, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yb5hg"]
+atlas = ExtResource("2_8lhq3")
+region = Rect2(120, 0, 40, 41)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hoah5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ex27r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_atf6d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iixnu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yb5hg")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u6oja"]
+radius = 5.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mjtd6"]
+
+[node name="Eagle" instance=ExtResource("1_y7ksk")]
+collision_mask = 0
+script = ExtResource("2_frngu")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_hoah5")
+animation = &"fly"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
+shape = SubResource("CircleShape2D_u6oja")
+
+[node name="PlayerDetector" type="RayCast2D" parent="." index="3"]
+target_position = Vector2(0, 200)
+
+[node name="DirectionTimer" type="Timer" parent="." index="4"]
+wait_time = 3.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" index="0"]
+shape = SubResource("CircleShape2D_mjtd6")
+
+[connection signal="timeout" from="DirectionTimer" to="." method="_on_direction_timer_timeout"]
