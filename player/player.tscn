@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://bt1o3vcaswxfb"]
+[gd_scene load_steps=13 format=3 uid="uid://bt1o3vcaswxfb"]
 
 [ext_resource type="Texture2D" uid="uid://c0sgbefnfk5nu" path="res://assets/player/player.png" id="1_j4ye4"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_lkmso"]
+[ext_resource type="PackedScene" uid="uid://13765fk1ddxr" path="res://shooter/shooter.tscn" id="3_pq8yk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wcqgk"]
 size = Vector2(9, 18)
@@ -140,11 +141,15 @@ libraries = {
 [node name="SoundPlayer" type="AudioStreamPlayer2D" parent="."]
 
 [node name="HitBox" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 4
+collision_layer = 2
+collision_mask = 20
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 position = Vector2(0, 6)
 shape = SubResource("CapsuleShape2D_4ktuy")
+
+[node name="Shooter" parent="." instance=ExtResource("3_pq8yk")]
+speed = 200.0
+shoot_delay = 1.0
 
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]

@@ -19,6 +19,7 @@ config/icon="res://icon.png"
 SignalManager="*res://singletons/signal_manager.gd"
 SoundManager="*res://singletons/sound_manager.gd"
 GameManager="*res://singletons/game_manager.gd"
+ObjectMaker="*res://singletons/object_maker.gd"
 
 [display]
 
@@ -60,6 +61,8 @@ shoot={
 2d_physics/layer_1="platforms"
 2d_physics/layer_2="player_hitbox"
 2d_physics/layer_3="enemy_hitbox"
+2d_physics/layer_4="player_bullet"
+2d_physics/layer_5="enemy_bullet"
 
 [rendering]
 

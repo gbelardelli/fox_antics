@@ -4,8 +4,8 @@
 [ext_resource type="Script" path="res://level_base/level_base.gd" id="1_ubrp8"]
 [ext_resource type="PackedScene" uid="uid://c6o5grlfuoxtk" path="res://player_cam/player_cam.tscn" id="2_o4jwj"]
 [ext_resource type="PackedScene" uid="uid://bt1o3vcaswxfb" path="res://player/player.tscn" id="3_bew18"]
-[ext_resource type="PackedScene" uid="uid://cxnhyje0uqouk" path="res://enemies/frog/frog.tscn" id="5_1sjqr"]
-[ext_resource type="PackedScene" uid="uid://28svsrkce16f" path="res://enemies/snail/snail.tscn" id="5_d2xdn"]
+[ext_resource type="PackedScene" uid="uid://cjfus821uisel" path="res://enemies/eagle/eagle.tscn" id="5_7ddoc"]
+[ext_resource type="PackedScene" uid="uid://28svsrkce16f" path="res://enemies/snail/snail.tscn" id="6_suno6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7rfxc"]
 texture = ExtResource("1_juyxc")
@@ -537,10 +537,10 @@ position = Vector2(260, -149)
 zoom = Vector2(2, 2)
 
 [node name="Player" parent="." instance=ExtResource("3_bew18")]
-position = Vector2(68, -34)
+position = Vector2(376, -40)
 
-[node name="Snail" parent="." instance=ExtResource("5_d2xdn")]
-position = Vector2(371, -33)
+[node name="Eagle" parent="." instance=ExtResource("5_7ddoc")]
+position = Vector2(548, -222)
 
-[node name="Frog" parent="." instance=ExtResource("5_1sjqr")]
-position = Vector2(504, -58)
+[node name="Snail" parent="." instance=ExtResource("6_suno6")]
+position = Vector2(213, -29)
